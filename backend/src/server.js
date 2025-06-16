@@ -66,6 +66,23 @@ app.delete("/api/favorites/:userId/:recipeId", async (req, res) => {
   }
 });
 
+// * GET ALL FAVORITE RECIPE ENDPOINT
+app.get("/api/favorites/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const userFavorites = await db
+      .select()
+      .from(favoritesTable)
+      .where(eq(favoritesTable.userId, userId));
+
+    res.status(200).json(userFavorites);
+  } catch (error) {
+    console.log("ERROR GETTING FAVORITE RECIPE", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
