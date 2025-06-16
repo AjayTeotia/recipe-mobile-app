@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Recipe App",
+    "slug": "recipe_app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/i2.png", 
-    "scheme": "mobile",
+    "scheme": "recipe_app",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
