@@ -1,23 +1,23 @@
-import { useSignUp } from "@clerk/clerk-expo";
+import { useSignIn } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-  Alert,
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    Alert,
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { authStyles } from "../../assets/styles/auth.styles";
 import { COLORS } from "../../constants/colors";
 
 export default function SignInScreen() {
-  const { isLoaded, signUp, setActive } = useSignUp();
+  const { isLoaded, signIn, setActive } = useSignIn();
   const router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -31,17 +31,12 @@ export default function SignInScreen() {
       return;
     }
 
-    if (password.length < 8) {
-      Alert.alert("Error", "Password must be at least 8 characters");
-      return;
-    }
-
     if (!isLoaded) return;
 
     setLoading(true);
 
     try {
-      const signInAttempt = await signUp.create({
+      const signInAttempt = await signIn.create({
         identifier: email,
         password,
       });
@@ -54,7 +49,7 @@ export default function SignInScreen() {
       }
     } catch (err) {
       Alert.alert("Error", err.errors?.[0]?.message || "Sign in failed");
-      console.log(JSON.stringify(err, null, 2));
+      console.error(JSON.stringify(err, null, 2));
     } finally {
       setLoading(false);
     }
