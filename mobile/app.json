@@ -4,23 +4,23 @@
     "slug": "recipe_app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/i2.png", 
+    "icon": "./assets/images/i2.png",
     "scheme": "recipe_app",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/i2.png", 
+        "foregroundImage": "./assets/images/i2.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.ajayteotia.recipe_app"
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
       "favicon": "./assets/images/i2.png"
     },
     "plugins": [
@@ -37,6 +37,13 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "68d2d58d-0c6c-439e-984d-91d47a4241f3"
+      },
+      "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_YWJsZS1zbG90aC01Ny5jbGVyay5hY2NvdW50cy5kZXYk"
     }
   }
 }
